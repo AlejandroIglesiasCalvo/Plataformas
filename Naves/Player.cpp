@@ -7,13 +7,13 @@ Player::Player(float x, float y, Game* game)
 	audioShoot = new Audio("res/efecto_disparo.wav", false);
 
 	aIdleRight = new Animation("res/jugador_idle_derecha.png", width, height,
-		320, 40, 6, 8, game);
+		320, 40, 6, 8, true, game);
 	aIdleLeft = new Animation("res/jugador_idle_izquierda.png", width, height,
-		320, 40, 6, 8, game);
+		320, 40, 6, 8, true, game);
 	aRunningRight = new Animation("res/jugador_corriendo_derecha.png", width, height,
-		320, 40, 6, 8, game);
+		320, 40, 6, 8, true, game);
 	aRunningLeft = new Animation("res/jugador_corriendo_izquierda.png", width, height,
-		320, 40, 6, 8, game);
+		320, 40, 6, 8, true, game);
 
 	animation = aIdleRight;
 }
