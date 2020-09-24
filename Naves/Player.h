@@ -14,10 +14,13 @@ public:
 	void moveY(float axis);
 	void draw() override; // Va a sobrescribir
 	int orientation;
+	int state;
 	Animation* aIdleRight;
 	Animation* aIdleLeft;
 	Animation* aRunningRight;
 	Animation* aRunningLeft;
+	Animation* aShootingRight;
+	Animation* aShootingLeft;
 	Animation* animation; // Referencia a la animación mostrada
 	Audio* audioShoot;
 	int shootCadence = 20;

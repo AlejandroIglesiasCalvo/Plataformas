@@ -1,6 +1,6 @@
 #include "Projectile.h"
 Projectile::Projectile(float x, float y, Game* game) :
-	Actor("res/disparo_jugador.png", x, y, 18, 6, game) {
+	Actor("res/disparo_jugador2.png", x, y, 20, 20, game) {
 	vx = 12;
 }
 
