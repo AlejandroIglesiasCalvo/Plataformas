@@ -7,6 +7,9 @@ class Space
 {
 public:
 	Space(float gravity);
+	void update();
+	void updateMoveRight(Actor* dynamicAct);
+	void updateMoveLeft(Actor* dynamicAct);
 	void addDynamicActor(Actor* actor);
 	void addStaticActor(Actor* actor);
 	void removeDynamicActor(Actor* actor);

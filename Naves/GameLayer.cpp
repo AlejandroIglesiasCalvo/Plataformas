@@ -131,6 +131,7 @@ void GameLayer::keysToControls(SDL_Event event) {
 }
 
 void GameLayer::update() {
+	space->update();
 	background->update();//Movemos el fondo
 	// Generar enemigos
 	//newEnemyTime--;
