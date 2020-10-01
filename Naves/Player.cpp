@@ -47,9 +47,6 @@ Projectile* Player::shoot() {
 
 
 void Player::update() {
-	//Ejecutamos la animacion
-	animation->update();
-	//Asignamos la animacion que termina
 	bool endAnimation = animation->update();
 
 	// Acabo la animación, no sabemos cual
@@ -60,6 +57,7 @@ void Player::update() {
 		}
 	}
 
+
 	// Establecer orientación
 	if (vx > 0) {
 		orientation = game->orientationRight;
@@ -67,6 +65,8 @@ void Player::update() {
 	if (vx < 0) {
 		orientation = game->orientationLeft;
 	}
+
+
 	// Selección de animación basada en estados
 	if (state == game->stateShooting) {
 		if (orientation == game->orientationRight) {
@@ -95,10 +95,13 @@ void Player::update() {
 		}
 	}
 
-	//Al final dispara en la direccion correcta
+
 	if (shootTime > 0) {
 		shootTime--;
 	}
+
+	x = x + vx;
+	y = y + vy;
 }
 void Player::moveX(float axis) {
 	vx = axis * 6;

@@ -9,6 +9,11 @@
 #include <list>
 #include "Text.h"
 #include "Audio.h" 
+#include "Tile.h"
+
+#include <fstream> // Leer ficheros
+#include <sstream> // Leer líneas / String
+
 class GameLayer : public Layer
 {
 public:
@@ -18,6 +23,10 @@ public:
 	void update() override;
 	void draw() override;
 	void keysToControls(SDL_Event event);
+	void loadMap(string name);
+	void loadMapObject(char character, float x, float y);
+	int mapWidth;
+	list<Tile*> tiles;
 	Audio* audioBackground;
 	Text* textPoints;
 	int points;
