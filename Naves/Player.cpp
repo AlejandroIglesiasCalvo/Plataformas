@@ -111,6 +111,7 @@ void Player::moveY(float axis) {
 	vy = axis * 6;
 }
 
-void Player::draw() {
-	animation->draw(x, y);
+void Player::draw(float scrollX) {
+	animation->draw(x - scrollX, y);
 }
+

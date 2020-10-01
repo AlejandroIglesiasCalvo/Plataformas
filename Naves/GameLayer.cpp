@@ -7,6 +7,7 @@ GameLayer::GameLayer(Game* game)
 }
 
 void GameLayer::init() {
+	scrollX = 0;
 	tiles.clear();
 	//Audio
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
@@ -209,19 +210,21 @@ void GameLayer::update() {
 }
 
 void GameLayer::draw() {
+	calculateScroll();
+
 	background->draw();//Lo pintamos antes que el jugador, va por detras
 	for (auto const& tile : tiles) {
-		tile->draw();
+		tile->draw(scrollX);
 	}
 
 	player->draw();
 	//Disparos antes que enemigos
 	for (auto const& projectile : projectiles) {
-		projectile->draw();
+		projectile->draw(scrollX);
 	}
 	//Enemigos antes que colisiones, por si les damos
 	for (auto const& enemy : enemies) {
-		enemy->draw();
+		enemy->draw(scrollX);
 	}
 	// Colisiones
 	for (auto const& enemy : enemies) {
@@ -287,4 +290,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	}
+}
+void GameLayer::calculateScroll() {
+	scrollX = player->x - 200;
 }

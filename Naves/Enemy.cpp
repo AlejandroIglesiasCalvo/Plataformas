@@ -47,9 +47,12 @@ void Enemy::update() {
 
 }
 
-void Enemy::draw() {
-	animation->draw(x, y);
+
+void Enemy::draw(float scrollX) {
+	animation->draw(x - scrollX, y);
 }
+
+
 
 void Enemy::impacted() {
 	if (state != game->stateDying) {

@@ -20,7 +20,7 @@ Actor::~Actor() {
 	//Ya no se borra porque borraria todas las texturas
 	//SDL_DestroyTexture(texture);
 }
-void Actor::draw() {
+void Actor::draw(float scrollX) {
 	// Recorte en el fichero de la imagen
 	SDL_Rect source;
 	source.x = 0;
@@ -29,7 +29,7 @@ void Actor::draw() {
 	source.h = fileHeight; // texture.height;
 	// Donde se va a pegar en el renderizador
 	SDL_Rect destination;
-	destination.x = x - width / 2;
+	destination.x = x - width / 2 - scrollX;
 	destination.y = y - height / 2;
 	destination.w = width;
 	destination.h = height;
