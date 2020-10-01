@@ -5,5 +5,5 @@ Projectile::Projectile(float x, float y, Game* game) :
 }
 
 void Projectile::update() {
-	x = x + vx;
+	//x = x + vx;
 }

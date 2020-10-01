@@ -7,6 +7,7 @@ GameLayer::GameLayer(Game* game)
 }
 
 void GameLayer::init() {
+	space = new Space(0);
 	scrollX = 0;
 	tiles.clear();
 	//Audio
@@ -40,6 +41,7 @@ void GameLayer::processControls() {
 	if (controlShoot) {
 		Projectile* newProjectile = player->shoot();
 		if (newProjectile != NULL) {
+			space->addDynamicActor(newProjectile);
 			projectiles.push_back(newProjectile);
 		}
 	}
@@ -198,11 +200,13 @@ void GameLayer::update() {
 	//Eliminar los enemigos muertos
 	for (auto const& delEnemy : deleteEnemies) {
 		enemies.remove(delEnemy);
+		space->removeDynamicActor(delEnemy);
 	}
 	deleteEnemies.clear();
 	//Eliminar los proyectiles gastados
 	for (auto const& delProjectile : deleteProjectiles) {
 		projectiles.remove(delProjectile);
+		space->removeDynamicActor(delProjectile);
 		delete delProjectile;
 	}
 	deleteProjectiles.clear();
@@ -274,12 +278,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		// modificación para empezar a contar desde el suelo.
 		enemy->y = enemy->y - enemy->height / 2;
 		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
 		break;
 	}
 	case '1': {
 		player = new Player(x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
+		space->addDynamicActor(player);
 		break;
 	}
 	case '#': {
@@ -287,6 +293,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
+		space->addStaticActor(tile);
 		break;
 	}
 	}

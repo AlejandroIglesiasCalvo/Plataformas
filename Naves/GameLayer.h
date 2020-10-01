@@ -13,7 +13,7 @@
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
-
+#include "Space.h" // importar
 class GameLayer : public Layer
 {
 public:
@@ -26,6 +26,7 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
+	Space* space;
 	float scrollX;
 	int mapWidth;
 	list<Tile*> tiles;
