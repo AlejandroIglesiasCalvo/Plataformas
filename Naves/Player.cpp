@@ -47,6 +47,10 @@ Projectile* Player::shoot() {
 
 
 void Player::update() {
+	if (invulnerableTime > 0) {
+		invulnerableTime--;
+	}
+
 	bool endAnimation = animation->update();
 	if (collisionDown == true) {
 		onAir = false;
@@ -118,12 +122,28 @@ void Player::moveY(float axis) {
 }
 
 void Player::draw(float scrollX) {
-	animation->draw(x - scrollX, y);
+	if (invulnerableTime == 0) {
+		animation->draw(x - scrollX, y);
+	}
+	else {
+		if (invulnerableTime % 10 >= 0 && invulnerableTime % 10 <= 5) {
+			animation->draw(x - scrollX, y);
+		}
+	}
 }
 void Player::jump() {
 	if (!onAir) {
 		vy = -16;
 		onAir = true;
+	}
+}
+void Player::loseLife() {
+	if (invulnerableTime <= 0) {
+		if (lifes > 0) {
+			lifes--;
+			invulnerableTime = 100;
+			// 100 actualizaciones 
+		}
 	}
 }
 

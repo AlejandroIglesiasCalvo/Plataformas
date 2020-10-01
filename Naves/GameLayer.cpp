@@ -157,8 +157,18 @@ void GameLayer::update() {
 	for (auto const& projectile : projectiles) {
 		projectile->update();
 	}
+	
+	// Colisiones
+	for (auto const& enemy : enemies) {
+		if (player->isOverlap(enemy)) {
+			player->loseLife();
+			if (player->lifes <= 0) {
+				init();
+				return;
+			}
+		}
+	}
 	// Colisiones , Enemy - Projectile
-
 	list<Enemy*> deleteEnemies;
 	list<Projectile*> deleteProjectiles;
 	//Eliminar disparos que se salen
@@ -236,14 +246,7 @@ void GameLayer::draw() {
 	for (auto const& enemy : enemies) {
 		enemy->draw(scrollX);
 	}
-	// Colisiones
-	for (auto const& enemy : enemies) {
-		if (player->isOverlap(enemy)) {
-			init();
-			return; // Cortar el for
-		}
-	}
-
+	
 	textPoints->draw();
 	backgroundPoints->draw();
 	SDL_RenderPresent(game->renderer); // Renderiza
