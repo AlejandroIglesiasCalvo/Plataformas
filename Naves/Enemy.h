@@ -10,6 +10,7 @@ public:
 	void draw(float scrollX = 0) override; // Va a sobrescribir
 	void update();
 	void impacted(); // Recibe impacto y pone animación de morir
+	float vxIntelligence;
 	int state;
 	float vx = 1;
 	float vy = 0;

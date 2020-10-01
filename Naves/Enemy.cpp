@@ -10,9 +10,11 @@ Enemy::Enemy(float x, float y, Game* game)
 
 	int VxRandom = 1 + (rand() % 12);
 	vx = VxRandom;
+	vxIntelligence = -1;
+	vx = vxIntelligence;
 
 	aMoving = new Animation("res/enemigo_movimiento.png", width, height,
-		108, 40, 6, 3,  true, game);
+		108, 40, 6, 3, true, game);
 	animation = aMoving;
 
 }
@@ -40,10 +42,18 @@ void Enemy::update() {
 		animation = aDying;
 	}
 
+	// Establecer velocidad
 	if (state != game->stateDying) {
-		vx = -1;
-		/*x = x + vx;*/
+		// no está muerto y se ha quedado parado
+		if (vx == 0) {
+			vxIntelligence = vxIntelligence * -1;
+			vx = vxIntelligence;
+		}
 	}
+	else {
+		vx = 0;
+	}
+
 
 }
 
