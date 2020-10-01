@@ -17,7 +17,7 @@ void GameLayer::init() {
 	textPoints->content = to_string(points);
 	//Jugador
 	//player = new Player(50, 50, game);
-	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5,-1, game);//Usando el nuevo constructor
+	background = new Background("res/fondo_2.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);//Usando el nuevo constructor
 	backgroundPoints = new Actor("res/icono_puntos.png",
 		WIDTH * 0.85, HEIGHT * 0.05, 24, 24, game);
 
@@ -130,20 +130,20 @@ void GameLayer::keysToControls(SDL_Event event) {
 void GameLayer::update() {
 	background->update();//Movemos el fondo
 	// Generar enemigos
-	newEnemyTime--;
-	if (newEnemyTime <= 0) {
-		int rX = (rand() % (600 - 500)) + 1 + 500;
-		int rY = (rand() % (300 - 60)) + 1 + 60;
-		enemies.push_back(new Enemy(rX, rY, game));
-		newEnemyTime = 110;
-	}
+	//newEnemyTime--;
+	//if (newEnemyTime <= 0) {
+	//	int rX = (rand() % (600 - 500)) + 1 + 500;
+	//	int rY = (rand() % (300 - 60)) + 1 + 60;
+	//	enemies.push_back(new Enemy(rX, rY, game));
+	//	newEnemyTime = 110;
+	//}
 	//Mover al jugador
 	player->update();
 	//Actualizar enemigos
 	for (auto const& enemy : enemies) {
 		enemy->update();
 	}
-	
+
 	//Actualizar disparos
 	for (auto const& projectile : projectiles) {
 		projectile->update();
@@ -266,6 +266,13 @@ void GameLayer::loadMap(string name) {
 void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
+	case 'E': {
+		Enemy* enemy = new Enemy(x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		enemy->y = enemy->y - enemy->height / 2;
+		enemies.push_back(enemy);
+		break;
+	}
 	case '1': {
 		player = new Player(x, y, game);
 		// modificación para empezar a contar desde el suelo.
