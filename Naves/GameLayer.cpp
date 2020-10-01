@@ -7,7 +7,7 @@ GameLayer::GameLayer(Game* game)
 }
 
 void GameLayer::init() {
-	space = new Space(0);
+	space = new Space(1);
 	scrollX = 0;
 	tiles.clear();
 	//Audio
@@ -58,13 +58,14 @@ void GameLayer::processControls() {
 
 	// Eje Y
 	if (controlMoveY > 0) {
-		player->moveY(1);
+		//player->moveY(1);
 	}
 	else if (controlMoveY < 0) {
-		player->moveY(-1);
+		player->jump();
+		//player->moveY(-1);
 	}
 	else {
-		player->moveY(0);
+		//player->moveY(0);
 	}
 }
 

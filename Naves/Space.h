@@ -10,6 +10,8 @@ public:
 	void update();
 	void updateMoveRight(Actor* dynamicAct);
 	void updateMoveLeft(Actor* dynamicAct);
+	void updateMoveTop(Actor* dynamicAct);
+	void updateMoveDown(Actor* dynamicAct);
 	void addDynamicActor(Actor* actor);
 	void addStaticActor(Actor* actor);
 	void removeDynamicActor(Actor* actor);

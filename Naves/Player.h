@@ -10,9 +10,11 @@ public:
 	Player(float x, float y, Game* game);
 	Projectile* shoot();
 	void update();
+	void jump();
 	void moveX(float axis);
 	void moveY(float axis);
 	void draw(float scrollX = 0) override; // Va a sobrescribir
+	bool onAir;
 	int orientation;
 	int state;
 	Animation* aIdleRight;
