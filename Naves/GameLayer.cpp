@@ -217,7 +217,7 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
-	player->draw();
+	player->draw(scrollX);
 	//Disparos antes que enemigos
 	for (auto const& projectile : projectiles) {
 		projectile->draw(scrollX);
