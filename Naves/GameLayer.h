@@ -28,6 +28,9 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
+	Actor* message;
+	bool pause;
+
 	// Elementos de interfaz
 	SDL_GameController* gamePad;
 	Pad* pad;
@@ -49,6 +52,7 @@ public:
 	Player* player;//Jugador
 	Background* background;//Fondo
 	bool controlShoot = false;
+	bool controlContinue = false;
 	int controlMoveY = 0;
 	int controlMoveX = 0;
 
