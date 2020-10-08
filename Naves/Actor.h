@@ -12,6 +12,8 @@ public:
 	bool isOverlap(Actor* actor); //Para comprobar colisiones
 	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool collisionDown;
+	bool outRight;
+	bool outLeft;
 	bool clicked; // Está pulsado
 	SDL_Texture* texture;
 	int x;
