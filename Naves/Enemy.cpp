@@ -41,7 +41,7 @@ void Enemy::update() {
 	if (state == game->stateDying) {
 		animation = aDying;
 	}
-
+	
 	// Establecer velocidad
 	if (state != game->stateDying) {
 		// no está muerto y se ha quedado parado
@@ -63,7 +63,7 @@ void Enemy::update() {
 			}
 			vx = vxIntelligence;
 		}
-
+		
 	}
 	else {
 		vx = 0;
