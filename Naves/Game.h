@@ -27,6 +27,9 @@ public:
 	SDL_Window* window; // ventana
 	SDL_Renderer* renderer; // renderizador
 	bool loopActive; // Juego activo
+	Layer* layer;
+	Layer* menuLayer;
+
 	Layer* gameLayer;
 	int currentLevel = 0;
 	int finalLevel = 2;
