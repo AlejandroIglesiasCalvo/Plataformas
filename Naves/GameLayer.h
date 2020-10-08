@@ -26,6 +26,9 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
+	// Elementos de interfaz
+	Actor* buttonJump;
+	Actor* buttonShoot;
 	Tile* cup; // Elemento de final de nivel
 	Space* space;
 	float scrollX;

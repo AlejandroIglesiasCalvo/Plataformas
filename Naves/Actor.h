@@ -10,7 +10,9 @@ public:
 	virtual void draw(float scrollX = 0);
 	bool isInRender(float scrollX = 0);
 	bool isOverlap(Actor* actor); //Para comprobar colisiones
+	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool collisionDown;
+	bool clicked; // Está pulsado
 	SDL_Texture* texture;
 	int x;
 	int y;

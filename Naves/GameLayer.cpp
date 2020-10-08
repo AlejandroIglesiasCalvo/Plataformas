@@ -7,6 +7,9 @@ GameLayer::GameLayer(Game* game)
 }
 
 void GameLayer::init() {
+	buttonJump = new Actor("res/boton_salto.png", WIDTH * 0.9, HEIGHT * 0.55, 100, 100, game);
+	buttonShoot = new Actor("res/boton_disparo.png", WIDTH * 0.75, HEIGHT * 0.83, 100, 100, game);
+
 	space = new Space(1);
 	scrollX = 0;
 	tiles.clear();
@@ -259,6 +262,10 @@ void GameLayer::draw() {
 	
 	textPoints->draw();
 	backgroundPoints->draw();
+	// HUD
+	buttonJump->draw(); // NO TIENEN SCROLL, POSICION FIJA
+	buttonShoot->draw(); // NO TIENEN SCROLL, POSICION FIJA
+
 	SDL_RenderPresent(game->renderer); // Renderiza
 }
 
