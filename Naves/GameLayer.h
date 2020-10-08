@@ -23,6 +23,7 @@ public:
 	void update() override;
 	void draw() override;
 	void keysToControls(SDL_Event event);
+	void mouseToControls(SDL_Event event); // USO DE MOUSE
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
